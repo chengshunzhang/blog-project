@@ -15,38 +15,51 @@
 
   </head>
   <body>
-    <nav class="navbar navbar-default techfont custom-navbar">
-      <div class="container">
-        <ul class="nav navbar-nav">
-          <li> <a class="navbar-brand" href="{% url 'post_list' %}">My Blog</a> </li>
-          <li> <a href="{% url 'about' %}">About</a> </li>
-          <li> <a href="https://www.github.com">Github</a> </li>
-          <li> <a href="https://www.linkedin.com">LinkedIn</a> </li>
-        </ul>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'post_list' %}">My Blog</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <ul class="nav navbar-nav navbar-right">
-          {% if user.is_authenticated %}
-            <li>
-              <a href="{% url 'post_new' %}">New Post</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about' %}"> About <span class="sr-only">(current)</span></a>
             </li>
-            <li>
-              <a href="{% url 'draft_list' %}">Drafts</a>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.github.com">Github</a>
             </li>
-            <li>
-              <a href="{% url 'logout' %}">Log Out</a>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.linkedin.com">LinkedIn</a>
             </li>
-            <li>
-              <a>Welcome: {{user.username}}</a>
-            </li>
-          {% else %}
-            <li>
-              <a class="nav navbar-right" href="{% url 'login' %}"> <span class="glyphion glyphion-user">Login</span> </a>
-            </li>
-          {% endif %}
-        </ul>
-      </div>
+          </ul>
 
-    </nav>
+          <ul class="nav justify-content-end">
+            {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'post_new' %}">New Post</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'draft_list' %}">Drafts</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">Welcome: {{user.username}}</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}"> <span class="glyphicon glyphicon-user">Login</span> </a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+
+      </nav>
+    </div>
+
 
     <div class="content container">
       <div class="row">
